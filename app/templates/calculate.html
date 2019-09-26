@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% block content %}
+    <h1>Calculate</h1>
+    <div>
+        <table id="ouput">
+            <tr>
+                <th>Device/Appliance</th>
+                <th>Quantity</th>
+                <th>Power consumption in Watts</th>
+                <th>Hours per day  use</th>
+            </tr>
+            <tr>
+                <td><input type="text"></td>
+                <td><input type="number"></td>
+                <td><input type="number"></td>
+                <td><input type="number" max=24></td>
+            </tr>
+        </table>
+        <button onclick="add()">Add</button>
+    </div>
+{% endblock %}
