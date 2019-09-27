@@ -1,0 +1,131 @@
+body {
+            background-color: #134373;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            float: left;
+            margin-top: 5px;
+        }
+
+
+        #top img {
+            height: 100px;
+            width: auto;
+            float: left;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        #top h2 {
+            color: #fff;
+            padding: 30px;
+            margin-left: 100px;
+        }
+
+
+        #pad img {
+            height: 100px;
+            width: auto;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #data h2 {
+            padding-top: 12px;
+        }
+
+        .req h3 {
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.5em;
+        }
+
+        .req h4 {
+            font-size: 36px;
+        }
+
+        .req p {
+            font-size: 50px;
+            color: #2678CA;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #2678CA;
+            cursor: pointer;
+            border-color: #2678CA;
+            color: white;
+        }
+
+
+
+        nav li {
+            display: inline-block;
+            margin-left: 40px;
+        }
+
+        .navbar-nav .nav-link,
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+            /* border-bottom: 2px solid yellow; */
+        }
+
+        .navbar-nav li:last-child{
+            margin-right: 30px;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link:focus {
+            color: yellow;
+        }
+
+        footer img{
+            height: 60px;
+            width: auto;
+            /* float: left; */
+            margin-top: 22px;
+            padding: 10px;
+
+        }
+
+        @media screen and (max-width: 900px) {
+            #top h2 {
+                font-size: 16px;
+                padding-left: 5px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                margin-left: 10px;
+                text-align: center;
+
+            }
+
+            #data h2{
+                font-size: 30px;
+                margin-top: 10px
+            }
+
+            #top {
+                align-content: center;
+                align-items: center;
+            }
+
+            #top img {
+                height: 50px;
+                width: auto;
+                margin-top: 5px;
+                margin-bottom: 15px;
+                display: block;
+                margin-left: 50px;
+                margin-right: auto;
+            }
+        }
