@@ -1,21 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Calculate</h1>
-    <div>
-        <table id="ouput">
-            <tr>
-                <th>Device/Appliance</th>
-                <th>Quantity</th>
-                <th>Power consumption in Watts</th>
-                <th>Hours per day  use</th>
-            </tr>
-            <tr>
-                <td><input type="text"></td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="number" max=24></td>
-            </tr>
-        </table>
-        <button onclick="add()">Add</button>
+    <div id="img-text-align">
+        <div class="img-text">
+            <img src="{{ url_for('static', filename='img/img-calc2.png') }}"/>
+        </div>
+        <div class="img-text">
+            <div class="header-text">
+                
+                 <p>CALCULATOR</p>
+                </div>
+            </div>
+        </div>
     </div>
+<div id="container">
+    <div id="wrapper">
+
+    <div id="form-container">
+       
+        <div class="img-form">
+          
+
+
+          <div id="wrapper" class="form-wrapper">
+            <form class="appliance">
+                <table>
+                    <h5>Please fill in your appliances</h5>
+                    <tr>
+                        <td><input id="device" type="" name="" placeholder="Device/Appliance"></td>
+                        <td><input id="quantity" type="" name="" placeholder="Quantity"></td>
+                        <td><input id="power" type="" name="" placeholder="Power consumption (Watts)"></td>
+                        <td><input id="hoursPerDay" type="" name=""  max=24 placeholder="Hours per day  use"></td>
+                        <td><button type="button"  onclick="calculate()">Add</button></td>
+                    </tr>
+                </table>
+            </form>
+            
+            <br><br>
+
+            <table>
+                <h2>YOUR DATA</h2>
+                <tr>
+                    <th>Device/Appliance</th>
+                    <th>Quantity</th>
+                    <th>Power consumption (Watts)</th>
+                    <th>Hours per day  use</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <table id="theTable"></table>
+            </table>
+
+            <button id="totalButton" class="login" onclick="totalPowerConsumption()">Your Total Output</button>
+            <div id="total"></div>
+            <br>
+            <button id="reset" class="login" onclick="reset()">reset</button>
+        </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/solar2.js') }}"></script>
 {% endblock %}
