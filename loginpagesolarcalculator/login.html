@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login|SolarCalculator</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/results.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src="img/elektor-white.png" class='logo' alt="Brand"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                        <span class="navbar-toggler-icon text-white"></span>
+                    </button>
+                    <div class="collapse navbar-collapse text-white" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">CALCULATOR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">SOLAR POWER</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">TEAMS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!--Login box-->
+    <div id="loginbox">
+        <div id="logintext">
+            <h4>Login<br> to access your results</h4>
+        </div>
+        <button id="loginfacbk">Login with Facebook</button>
+        <form id="inputbox" action=""  method="POST">
+            <label class="headers" for="email">Email</label>
+            <input type="text" id="" placeholder="Email" required >
+            <label class="headers" for="password">Password</label>
+            <input type="password" id="" placeholder="Password" required> <br>
+
+        </form>
+        <div id="checkbox">
+        <input type="checkbox" name="remember" >&nbsp;Remember&nbsp;Me
+        </div>
+
+        <button id=login-btn>Log in</button>
+              
+    </div>
+
+    <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+
+<footer>
+        <div id="footer">
+            <div class="container text-white mt-5">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="img/whitecalc.png" alt="">
+                        <img src="img/elektor-white.png" alt="">
+                        <div class="div">
+                        <p class='mt-3'> &copy; 2019. TeamCharites All rights reserved</p>
+                    </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <p class='mt-3'>TERMS OF USE</p>
+                        <p>DISCLAIMER</p>
+                        <p>PRIVACY</p>
+                        <p>SITEMAP</p>
+
+
+                    </div>
+                    <div class="col-md-2">
+                        <h4 class='mt-3'>CONTACT US</h4>
+                        <address style="line-height: 2rem;">
+                        Team Charites HQ, <br>
+                        HNG Internship, <br>
+                        Remote Address, <br>
+                        Lagos,&nbsp;Nigeria
+                    </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</html>

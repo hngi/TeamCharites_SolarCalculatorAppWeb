@@ -1,0 +1,174 @@
+body {
+    margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: #134373;
+	font-family: Futura Md BT;
+}
+
+#loginbox {
+	position: absolute;
+	width: 600px;
+	height: 422px;
+	left:350px;
+	top: 82px;
+	background: #FAFCFE;
+	box-shadow: 11px 30px 60px #134373;
+	border-radius: 25px;
+}
+
+#logintext h4 {
+	position: absolute;
+	width: 400px;
+	height: 100px;
+	left: 100px;
+	top: 10px;
+
+	font-family: Futura Md BT;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: center;
+	letter-spacing: 0.03em;
+	color: #363333;
+}
+
+button#loginfacbk {
+	position: absolute;
+	width: 300px;
+	height: 43px;
+	left: 150px;
+	top: 70px;
+	background: #475993;
+	border-radius: 5px;
+
+	font-family: Futura Md BT;
+	font-size: 15px;
+	line-height: 36px;
+/* identical to box height */
+	text-align: center;
+	letter-spacing: 0.06em;
+	color: #FAFCFE;
+	cursor: pointer;
+	outline: none;
+}
+
+button#loginfacbk:hover {
+	background: #667bc2;
+}
+
+#inputbox{
+	position: relative;
+	margin: auto;
+	left: 0px;
+	top: 80px;
+	height: 200px;
+	
+}
+
+#inputbox input[type="text"], #inputbox input[type="password"]  {
+	position: relative;
+	display: block;
+    margin-bottom: 5px;
+	margin-top: 30px;
+	margin-left: 80px;
+    padding: 5px;
+    width: 400px;   
+    height: 40px;
+    background: #F8F8F9;
+	border: 1.5px solid rgba(0, 0, 0, 0.18);
+	box-sizing: border-box;
+	border-radius: 5px;
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+	transition: 0.2s ease; 
+}
+
+#inputbox input[type="text"]:hover, #inputbox input[type="password"]:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+	border: 1.3px solid rgb(107, 214, 214);
+}
+
+.headers {
+position: relative;
+width: 50px;
+height: 20px;
+left: 80px;
+top: 45px;
+
+font-family: Futura MD BT;
+font-size: 20px;
+line-height: 5px;
+letter-spacing: 0.04em;
+
+color: rgba(0, 0, 0, 0.7);
+}
+
+#checkbox {
+position: absolute;
+line-height: 50px;
+left: 74px;
+top: 310px;
+
+font-family: Futura MD BT;
+font-size: 15px;
+/* identical to box height */
+
+text-align: left;
+letter-spacing: 0.0001em;
+
+color: rgba(0, 0, 0, 0.7);
+}
+
+#checkbox input[type="checkbox"] {
+	width: 30px;
+	height: 20px;
+}
+
+#login-btn {
+	position: absolute;
+	width: 217px;
+	height: 40px;
+	left: 75px;
+	top: 355px;
+
+	background: #134373;
+	box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	font-family: Futura MD BT;
+	color: #FAFCFE;
+	font-size: 15px;
+	line-height: 5px;
+	letter-spacing: 0.04em
+}
+
+#login-btn:hover{
+	background:#105fad;
+}
+
+.footer {
+	width: 100%;
+	bottom: 0;
+}
+
+.container {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background;
+	font-size: 11px;
+	margin-top: 2px;
+	
+}
+
+.row{
+	width: 100%;
+	height: 160px;
+	padding-top:0px;
+}
