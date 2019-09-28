@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-web: flask db upgrade; flask translate compile; gunicorn app:app
-=======
-web: flask db upgrade; flask translate compile; gunicorn app:app
->>>>>>> 89ecd42703bf65af14b3e466c2a889fe972a8d10
+web: gunicorn app:app
