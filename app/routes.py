@@ -23,7 +23,7 @@ def calculate():
 
 @app.route("/result")
 def result():
-    return render_template('result.html', title='Result')
+    return render_template('results.html', title='Result')
 
 # @app.route('/power_consumption', methods=['POST'])
 # def total_output_load():
