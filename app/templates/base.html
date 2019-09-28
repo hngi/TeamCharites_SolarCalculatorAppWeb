@@ -32,13 +32,10 @@
                         <a class="nav-link" href="{{ url_for('index') }}">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CALCULATOR</a>
+                        <a class="nav-link" href="{{ url_for('calculate') }}">CALCULATOR</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">SOLAR POWER</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">TEAMS</a>
+                        <a class="nav-link" href="{{ url_for('about') }}">TEAMS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">FAQ</a>
@@ -64,8 +61,25 @@
         </div>
       </div>
     </main>
-
-    <footer style='background-color: #134373;'>
+    {% block safe %}
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <div id="pad">
+                    <img src="{{ url_for('static', filename='img/lock.svg') }}" class='img-fluid' alt="">
+                </div>
+            </div>
+            <div class="col-md-7 text-white">
+                <div id='data'>
+                    <h2>Your data is safe with Us. <br>
+                        We are 100% secure.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <footer>
         <div>
             <div class="container text-white mt-5">
                 <div class="row">
