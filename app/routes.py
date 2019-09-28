@@ -22,7 +22,7 @@ def calculate():
 
 
 @app.route("/result")
-def calculate():
+def result():
     return render_template('result.html', title='Result')
 
 # @app.route('/power_consumption', methods=['POST'])
