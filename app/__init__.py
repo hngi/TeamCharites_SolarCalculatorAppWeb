@@ -4,6 +4,7 @@ from flask import Flask
 app = Flask(__name__)
 
 from app import routes
+<<<<<<< HEAD
 
 def create_app(config_class=Config):
     # ...
@@ -26,6 +27,8 @@ def create_app(config_class=Config):
             app.logger.addHandler(file_handler)
 
         app.logger.setLevel(logging.INFO)
-        app.logger.info('Microblog startup')
+        app.logger.info('Team Charites')
 
     return app
+=======
+>>>>>>> 0ad6a5db9f66fbe82ae3cab375362cc4dad0a490
