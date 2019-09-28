@@ -120,7 +120,7 @@ numexpr==2.6.4
 numpy==1.14.0
 numpydoc==0.7.0
 oauthlib==2.1.0
-odo==0.5.1
+odo==0.5.0
 olefile==0.45.1
 openpyxl==2.4.10
 packaging==16.8
