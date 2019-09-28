@@ -1,0 +1,165 @@
+:root {
+  --padding-right: 50px;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, serif;
+}
+
+body{
+  background-color: #124071;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body nav .logo{
+  max-width: 120px;
+  height: 40px;
+}
+
+body nav{
+  display: flex;
+  height: 70px;
+  padding: 5px var(--padding-right);
+}
+
+body nav ul{
+  display: inline-flex;
+  position: absolute;
+  list-style-type: none;
+  right: var(--padding-right);
+}
+
+body nav ul li:not(:last-child) {
+  margin-right: 25px;
+}
+
+body nav ul li a{
+  color: #ffffff;
+  font-family: var(--font-family);
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+}
+.form-body{
+  padding: 30px;
+  max-width: 680px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.form-body h2{
+  color: #000000;
+  text-align: center;
+  font-size: 1.8em;
+  font-family: var(--font-family);
+}
+
+.fb-btn{
+  background-color: #445A90;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  margin: auto;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  padding: 0 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fb-btn:active{
+  opacity: 0.6;
+}
+
+form {
+  position: relative;
+  top: 30px;
+  max-width: 500px;
+  margin: auto;
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-areas: "input1 input2"
+                       "input3 input4";
+}
+
+.footer{
+  max-width: 726px;
+  padding: 10px 30px;
+  display: grid;
+  margin: auto;
+  grid-template-areas: "column1 column2 column3";
+}
+
+.column1{
+  grid-area: column1;
+}
+
+.column2 {
+  grid-area: column2;
+}
+
+.column3 {
+  grid-area: column3;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  height: 40px;
+  border: 3px solid #EAEBED;
+  border-radius: 3px;
+  padding: 0 10px;
+}
+
+.form-group {
+  margin: 20px 0;
+  width: 85%;
+}
+
+label{
+  font-weight: bold;
+}
+
+.calculator{
+  display: flex;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+}
+
+form .form-group:first-child{
+  grid-area: input1;
+}
+
+form .form-group:nth-child(2) {
+  grid-area: input2;
+}
+
+form .form-group:nth-child(3) {
+  grid-area: input3;
+}
+
+form .form-group:nth-child(4) {
+  grid-area: input4;
+}
+
+.submit-button {
+  background-color: #0F4472;
+  height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  padding: 0 20px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100px;
+}
+
+.submit-button:active{
+  opacity: 0.6;
+}
