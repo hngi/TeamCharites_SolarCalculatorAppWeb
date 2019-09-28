@@ -21,6 +21,20 @@ def calculate():
     return render_template('calculate.html', title='Calculate')
 
 
+@app.route('/power_consumption', method='POST')
+def total_output_load():
+    output = []
+    data = request.get_json()
+    for item in data:
+        app_qtty = item['qtty']
+        app_hours = item['hours']
+        app_consumption = item['consumption']
+        app_output = app_qtty * app_hours * app_consumption
+        output.append(app_output)
+    total_app_output = adder(output)
+    result = {'status': 'oK', 'status_code': '200', 'total_power_consumption': total_app_output}
+    return jsonify(result)
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
