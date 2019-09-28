@@ -21,6 +21,10 @@ def calculate():
     return render_template('calculate.html', title='Calculate')
 
 
+@app.route("/result")
+def calculate():
+    return render_template('result.html', title='Result')
+
 # @app.route('/power_consumption', methods=['POST'])
 # def total_output_load():
 #     output = []
