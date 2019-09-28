@@ -4,17 +4,20 @@ from app.forms import RegistrationForm, LoginForm
 
 
 @app.route("/")
-@app.route("/home")
+@app.route('/home')
 def index():
     return render_template('index.html')
+
 
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
 
+
 @app.route("/calculate")
 def calculate():
     return render_template('calculate.html', title='Calculate')
+
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -23,6 +26,7 @@ def register():
         flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -35,10 +39,12 @@ def login():
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
+
 @app.route("/logout")
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 @app.errorhandler(404)
 def error_404(error):
