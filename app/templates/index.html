@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <h1 class='mb-4' id="solar">Solar power <br> is the future</h1>
+                <p class='mb-2 text-justify'>Know how much power you have in your surrounding at different time
+                    intervals in order to
+                    plan for the safier, healthier and cost friendly future you and your family have always dreamt of.
+                </p>
+
+                <a href="#" class='btn mt-3 mb-5 shadow-lg'>Calculate now</a>
+
+            </div>
+
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='img/side.png') }}" id='side' alt="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <img src="{{ url_for('static', filename='img/solar-house.svg') }}" id='solar' alt="">
+                <h3 class='text-center' style="color:#134373">Are you looking to get a solar panel?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed numquam voluptates ad aperiam deleniti
+                    dicta repellendus dolor maiores, aut perspiciatis, distinctio a ea quam facere inventore possimus
+                    maxime autem nulla.</p>
+
+                <a href="#" class='btn learn'>Learn More</a>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+{% endblock %}
