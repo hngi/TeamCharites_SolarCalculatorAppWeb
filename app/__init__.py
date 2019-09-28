@@ -4,7 +4,6 @@ from flask import Flask
 app = Flask(__name__)
 
 from app import routes
-<<<<<<< HEAD
 
 def create_app(config_class=Config):
     # ...
@@ -18,7 +17,7 @@ def create_app(config_class=Config):
         else:
             if not os.path.exists('logs'):
                 os.mkdir('logs')
-            file_handler = RotatingFileHandler('logs/microblog.log',
+            file_handler = RotatingFileHandler('logs/app.log',
                                                maxBytes=10240, backupCount=10)
             file_handler.setFormatter(logging.Formatter(
                 '%(asctime)s %(levelname)s: %(message)s '
@@ -30,5 +29,3 @@ def create_app(config_class=Config):
         app.logger.info('Team Charites')
 
     return app
-=======
->>>>>>> 0ad6a5db9f66fbe82ae3cab375362cc4dad0a490
