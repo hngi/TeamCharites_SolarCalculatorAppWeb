@@ -92,9 +92,7 @@ def login():
         login_user(user)
         next_page = request.args.get('next')
         return redirect(next_page) if next_page else redirect(url_for('index'))
-    else:
-        return flash('Login Unsuccessful. Please check username and password', 'danger')
-
+    return flash('Login Unsuccessful. Please check username and password', 'danger')
 
 
 @app.route("/logout")
