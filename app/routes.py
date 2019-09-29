@@ -18,6 +18,7 @@ def about():
 
 
 @app.route("/calculate")
+@login_required
 def calculate():
     return render_template('calculate.html', title='Calculate')
 
@@ -69,7 +70,7 @@ def register():
         data = request.form
         hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
         # hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=data['username'], email=data['email'],password=hashed_password)
+        user = User(username=data['username'], email=data['email'], password=hashed_password)
         # user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
