@@ -14,7 +14,16 @@
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 
+    <style>
 
+        .container{overflow: hidden}
+        .tab{float: left;}
+        .tab-2{margin-left: 50px}
+        .tab-2 input{display: block;margin-bottom: 10px}
+        tr{transition:all .25s ease-in-out}
+        tr:hover{background-color:#EEE;cursor: pointer}
+
+    </style>
 
 </head>
 
@@ -72,45 +81,38 @@
                         <div id="form-container">
                             <div class="img-form">
                                 <div id="wrapper" class="form-wrapper">
-                                    <form class="appliance">
-                                        <div class="table-responsive">
-                                        <table class='table'>
-                                            <h5>Please fill in your appliances</h5>
+                                    <div class="tab tab-1">
+                                        <table id="table" border="1">
                                             <tr>
-                                                <td><input id="device" type="" name="" placeholder="Device/Appliance">
-                                                </td>
-                                                <td><input id="quantity" type="" name="" placeholder="Quantity"></td>
-                                                <td><input id="power" type="" name=""
-                                                        placeholder="Power consumption (Watts)"></td>
-                                                <td><input id="hoursPerDay" type="" name="" max=24
-                                                        placeholder="Hours per day  use"></td>
-                                                <td><button type="button" class='btn btn-primary' onclick="calculate()">Add</button></td>
+                                                <th>Device</th>
+                                                <th>Quantity</th>
+                                                <th>Power</th>
+                                                <th>Hours of use</th>
+                                                <th>Total Watts-Hours per day</th>
                                             </tr>
                                         </table>
                                     </div>
-                                    </form>
+                                    <div class="tab tab-2">
+                                        <h2>Fill in your Device details</h2>
+                                        Device Name :<input type="text" name="d" id="d">
+                                        Quantity :<input type="number" name="q" id="q">
+                                        Power :<input type="number" name="p" id="p">
+                                        Hours of use :<input type="number" name="h" id="h">
 
-                                    <br><br>
-                                    <div class="table-responsive">
-                                    <table class='table'>
-                                        <h4>YOUR DATA</h4>
-                                        <tr>
-                                            <th scope="row">Device/Appliance</th>
-                                            <th scope="row">Quantity</th>
-                                            <th scope="row">Power consumption (Watts)</th>
-                                            <th scope="row">Hours per day use</th>
-                                        </tr>
+                                        <button onclick="addHtmlTableRow();">Add</button>
+                                        <button onclick="editHtmlTbleSelectedRow();">Edit</button>
+                                        <button onclick="removeSelectedRow();">Remove</button>
                                     </div>
+
                                     <div class="table-responsive">
                                         <table class='table' id="theTable"></table>
 
                                 </div>
                                     <button id="totalButton" class="btn btn-primary login mt-3" onclick="totalPowerConsumption()">Show Your Total
                                         Output</button>
-                                        <a href="get_result">Get Result</a>
+                                    <button class="btn btn-primary login mt-3"><a href="get_result" style="color:white">Get Result</a></button>
                                     <div id="total"></div>
                                     <br>
-                                    <button id="reset" class="btn btn-primary login" onclick="reset()">Reset</button>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-        
+
             <footer style="background-color: #134373; color:#fafcfe; padding-top: 15px;">
                 <div class="container">
                     <div class="row">
