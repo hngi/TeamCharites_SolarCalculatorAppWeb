@@ -1,78 +1,202 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="content-section">
-        <h2>
-            Create Account to get your result
-        </h2>
-        <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
-                <div class="form-group">
-                    {{ form.username.label(class="form-control-label") }}
+<!DOCTYPE html>
+<html lang="en">
 
-                    {% if form.username.errors %}
-                        {{ form.username(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.username.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.username(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <br>
-                <div class="form-group">
-                    {{ form.email.label(class="form-control-label") }}
-                    {% if form.email.errors %}
-                        {{ form.email(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.email.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.email(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <br>
-                <div class="form-group">
-                    {{ form.password.label(class="form-control-label") }}
-                    {% if form.password.errors %}
-                        {{ form.password(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.password(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <br>
-                <div class="form-group">
-                    {{ form.confirm_password.label(class="form-control-label") }}
-                    {% if form.confirm_password.errors %}
-                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.confirm_password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.confirm_password(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-            </fieldset>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Elektor | Register</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/404.css') }}">
+
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/elektor-white.png') }}"
+                    class='logo' alt="Brand"></a>
+            <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon" style='color:white'></span>
+            </button>
+            <div class="collapse navbar-collapse text-white" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('calculate') }}">CALCULATOR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">LOGIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}">REGISTER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">ABOUT</a>
+                    </li>
+                </ul>
             </div>
-        </form>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+                <div id='container-form' style='background: #fafcfe; padding: 30px; border-radius: 5px'>
+
+                    <h2 class='text-center'>
+                        Create Account to get your result
+                    </h2>
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Join us now!</legend>
+                            <div class="form-group">
+                                {{ form.username.label(class="form-control-label") }}
+
+                                {% if form.username.errors %}
+                                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.username.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.username(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                {{ form.email.label(class="form-control-label") }}
+                                {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.email(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                {{ form.password.label(class="form-control-label") }}
+                                {% if form.password.errors %}
+                                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.password(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                {{ form.confirm_password.label(class="form-control-label") }}
+                                {% if form.confirm_password.errors %}
+                                {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.confirm_password.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.confirm_password(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </fieldset>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info") }}
+                        </div>
+                    </form>
+
+                    <div class="border-top pt-3">
+                        <small>
+                            Already Have An Account? <a class="btn btn-primary ml-2" style="color:white"
+                                href="{{ url_for('login') }}">Sign
+                                In</a>
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
     </div>
-    <div class="border-top pt-3">
-        <small>
-            Already Have An Account? <a class="ml-2" style="color:white" href="{{ url_for('login') }}">Sign In</a>
-        </small>
-    </div>
-{% endblock %}
+
+
+
+    <div class="container">
+            <div class="row my-5">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <div id="pad">
+                        <img src="{{ url_for('static', filename='img/lock.svg') }}" class='img-fluid' alt="">
+                    </div>
+                </div>
+                <div class="col-md-7 text-white">
+                    <div id='data'>
+                        <h2>Your data is safe with Us. <br>
+                            We are 100% secure.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <footer style="background-color: #134373; color:#fafcfe; padding-top: 30px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="{{ url_for('static', filename='img/whitecalc.png') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/elektor-white.png') }}" alt="">
+                        <div class="div">
+                            <p class='mt-3'> &copy; 2019. TeamCharites All rights reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 style="color: #e0dd1c;">About the App</h3>
+                        <p>Know how much power you have in your surrounding at different time
+                            intervals in order to
+                            plan for the safier, healthier and cost friendly future you and your family have always dreamt
+                            of.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 style="color: #e0dd1c;">Contact Us</h3>
+                        <address style="margin-bottom:30px;">
+                            Team Charites <br>
+                            3, Remote House,<br>
+                            HNG Avenue, Nigeria <br>
+                            +234-1111-0000 <br>
+                            info@charitesfinance.com
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+    
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+
+
+</body>
+
+</html>
