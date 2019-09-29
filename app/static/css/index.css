@@ -11,11 +11,11 @@ body {
 }
 
 img#side {
-    width: 80%;
     height: 300px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
 }
 
 .content-section {
@@ -27,6 +27,7 @@ img#side {
 }
 
 img#solar {
+    margin-top: 30px;
     width: 80%;
     height: 100px;
     display: block;
@@ -43,7 +44,6 @@ nav li {
 .navbar-nav .nav-link,
 .navbar-light .navbar-nav .nav-link {
     color: #134373;
-    /* border-bottom: 2px solid yellow; */
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
@@ -59,8 +59,13 @@ h1#solar {
 }
 
 a.btn {
-    background-color: yellow;
+    background-color: #e0dd1c;
     color: #134373;
+}
+
+a.btn:hover{
+    background: #134373; 
+    color: #e0dd1c;
 }
 
 a.btn.learn {
@@ -83,6 +88,31 @@ footer img {
     padding: 10px;
 
 }
+
+footer {
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	font-size: 80%;
+	margin-top: 20px;
+  }
+  
+  
+  footer p {
+	color: #fff;
+	/* text-align: center; */
+	margin-top: 10px;
+	line-height: 2em;
+  }
+  footer h3{
+	font-size: 22px;
+	color: #e0dd1c;
+  }
+  footer address{
+	font-size: 14px;
+	color: #fefffe;
+	line-height: 2em;
+  }
 
 @media screen and (max-width: 900px) {
     #top h2 {
@@ -127,7 +157,7 @@ footer img {
         font-style: italic;
     }
 
-    img#hide{
-        visibility: hidden;
+    img#side{
+        display: none;
     }
 }

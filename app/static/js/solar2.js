@@ -27,7 +27,7 @@ function calculate() {
 		    if (i == 4) {
 			    let b = row.insertCell(i);
 			    b.innerHTML = total;
-			    deleteButton(row);
+			    // deleteButton(row);
 			    break;
 		    } else {
 		        let b = row.insertCell(i);
