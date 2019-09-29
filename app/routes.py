@@ -39,7 +39,7 @@ def result():
 #     result = {'status': 'oK', 'status_code': '200', 'total_power_consumption': total_app_output}
 #     return jsonify(result)
 #
-@app.route("/register", methods=['GET', 'POST'])
+@app.route("/register", methods=['POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
