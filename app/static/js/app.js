@@ -5,7 +5,7 @@ $("document").ready(function(){
         var battery_voltage = $("#bv").val();
         var days_of_autonomy = $("#doa").val();
         $.ajax({
-            url: "http://localhost:5000/result/",
+            url: "https://charites-solarcalculator.herokuapp.com/result/",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({"total_power": total_power, "solar_panel_power":solar_panel_power,
