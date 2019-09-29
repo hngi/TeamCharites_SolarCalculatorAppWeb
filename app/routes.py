@@ -34,14 +34,14 @@ def result():
     load = data['total_power'] #user's total power consumption
     output_load = data['total_power'] * 1.3
     panel_capacity_needed = output_load / sun_hours
-    solar_panel_power = data['solar_panel_power'] #given by the user
+    solar_panel_power = 360 #given by the user
     number_of_panels_needed = math.ceil(panel_capacity_needed / solar_panel_power)
     # total_watt = data['total_watt']
     # inverter_size = total_watt * 1.3
     battery_loss = 0.85
     depth_of_discharge = 0.6
-    battery_voltage = data['battery_voltage'] #given by the user
-    days_of_autonomy = data['days_of_autonomy']# determined by user
+    battery_voltage = 12  #given by the user
+    days_of_autonomy = 3  # determined by user
     battery_required = (load * days_of_autonomy) / (battery_loss * depth_of_discharge * battery_voltage)
     return render_template('results.html', title='Result', panel_capacity_needed=panel_capacity_needed,
                            number_of_panels_needed=number_of_panels_needed, battery_required=battery_required)
@@ -95,20 +95,22 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
-# @app.route("/logout")
-# def logout():
-#     logout_user()
-#     return redirect(url_for('index'))
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
-# @app.errorhandler(404)
-# def error_404(error):
-#     return render_template('404.html'), 404
-#
-# @app.errorhandler(403)
-# def error_403(error):
-#     return render_template('404.html'), 403
-#
-# @app.errorhandler(500)
-# def error_500(error):
-#     return render_template('404.html'), 500
+@app.errorhandler(404)
+def error_404(error):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(403)
+def error_403(error):
+    return render_template('404.html'), 403
+
+
+@app.errorhandler(500)
+def error_500(error):
+    return render_template('404.html'), 500
