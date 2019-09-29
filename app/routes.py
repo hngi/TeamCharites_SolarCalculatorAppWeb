@@ -29,10 +29,10 @@ def get_result():
 
 @app.route("/result")
 def result():
-    data = request.get_json()
+    # data = request.get_json()
     sun_hours = 3.4
-    load = 20000 #user's total power consumption
-    output_load = 20000 * 1.3
+    load = 10182 #user's total power consumption
+    output_load = 10182 * 1.3
     panel_capacity_needed = output_load / sun_hours
     solar_panel_power = 360 #given by the user
     number_of_panels_needed = math.ceil(panel_capacity_needed / solar_panel_power)
