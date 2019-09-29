@@ -6,18 +6,39 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route("/")
-@app.route("/home")
+@app.route('/home')
 def index():
     return render_template('index.html')
+
 
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
 
+
 @app.route("/calculate")
 def calculate():
     return render_template('calculate.html', title='Calculate')
 
+
+@app.route("/result")
+def result():
+    return render_template('results.html', title='Result')
+
+# @app.route('/power_consumption', methods=['POST'])
+# def total_output_load():
+#     output = []
+#     data = request.get_json()
+#     for item in data:
+#         app_qtty = item['qtty']
+#         app_hours = item['hours']
+#         app_consumption = item['consumption']
+#         app_output = app_qtty * app_hours * app_consumption
+#         output.append(app_output)
+#     total_app_output = adder(output)
+#     result = {'status': 'oK', 'status_code': '200', 'total_power_consumption': total_app_output}
+#     return jsonify(result)
+#
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -31,6 +52,7 @@ def register():
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -47,19 +69,21 @@ def login():
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
-@app.route("/logout")
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
 
-@app.errorhandler(404)
-def error_404(error):
-    return render_template('404.html'), 404
-
-@app.errorhandler(403)
-def error_403(error):
-    return render_template('404.html'), 403
-
-@app.errorhandler(500)
-def error_500(error):
-    return render_template('404.html'), 500
+# @app.route("/logout")
+# def logout():
+#     logout_user()
+#     return redirect(url_for('index'))
+#
+#
+# @app.errorhandler(404)
+# def error_404(error):
+#     return render_template('404.html'), 404
+#
+# @app.errorhandler(403)
+# def error_403(error):
+#     return render_template('404.html'), 403
+#
+# @app.errorhandler(500)
+# def error_500(error):
+#     return render_template('404.html'), 500
