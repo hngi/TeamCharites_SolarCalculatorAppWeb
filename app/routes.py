@@ -18,13 +18,11 @@ def about():
 
 
 @app.route("/calculate")
-# @login_required
 def calculate():
     return render_template('calculate.html', title='Calculate')
 
 
 @app.route("/get_result")
-# @login_required
 def get_result():
     return render_template('get_result.html')
 
@@ -85,38 +83,32 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
-    # if form.validate_on_submit():
-    data = request.form
-    user = User.query.filter_by(email=data['username']).first()
-    if user and bcrypt.check_password_hash(user.password, form.password.data):
-        login_user(user)
-        return redirect(url_for('index'))
-    return flash('Login Unsuccessful. Please check username and password', 'danger')
+    if form.validate_on_submit():
+        data = request.form
+        user = User.query.filter_by(email=data['username']).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('index'))
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
+    return render_template('login.html', title='Login', form=form)
 
 
-@app.route("/logout")
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
+# @app.route("/logout")
+# def logout():
+#     logout_user()
+#     return redirect(url_for('index'))
 
 
-@app.errorhandler(404)
-def error_404(error):
-    return render_template('404.html'), 404
-
-
-@app.errorhandler(403)
-def error_403(error):
-    return render_template('404.html'), 403
-
-
-@app.errorhandler(500)
-def error_500(error):
-    return render_template('404.html'), 500
-
-
-@app.after_request
-def add_headers(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    return response
+# @app.errorhandler(404)
+# def error_404(error):
+#     return render_template('404.html'), 404
+#
+# @app.errorhandler(403)
+# def error_403(error):
+#     return render_template('404.html'), 403
+#
+# @app.errorhandler(500)
+# def error_500(error):
+#     return render_template('404.html'), 500
