@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get result</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Elektor | Get Result</title>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/404.css') }}">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+    Total Power Consumption: <input id="tpc">
+    </div>
+    <div class="row">
+    Solar Panel Power: <input id="spp">
+    </div>
+    <div class="row">
+    Battery Voltage: <input id="bv">
+    </div>
+    <div class="row">
+    Days of autonomy: <input id="doa">
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@ from flask import render_template, url_for, flash, redirect, request
 from app.forms import RegistrationForm, LoginForm
 from app.models import User
 from flask_login import login_user, current_user, logout_user, login_required
+import math
 
 
 @app.route("/")
@@ -23,7 +24,22 @@ def calculate():
 
 @app.route("/result")
 def result():
-    return render_template('results.html', title='Result')
+    data = request.get_json()
+    sun_hours = 3.4
+    load = data['total_power'] #user's total power consumption
+    output_load = data['total_power'] * 1.3
+    panel_capacity_needed = output_load / sun_hours
+    solar_panel_power = data['solar_panel_power'] #given by the user
+    number_of_panels_needed = math.ceil(panel_capacity_needed / solar_panel_power)
+    # total_watt = data['total_watt']
+    # inverter_size = total_watt * 1.3
+    battery_loss = 0.85
+    depth_of_discharge = 0.6
+    battery_voltage = data['battery_voltage'] #given by the user
+    days_of_autonomy = data['days_of_autonomy']# determined by user
+    battery_required = (load * days_of_autonomy) / (battery_loss * depth_of_discharge * battery_voltage)
+    return render_template('results.html', title='Result', panel_capacity_needed=panel_capacity_needed,
+                           number_of_panels_needed=number_of_panels_needed, battery_required=battery_required)
 
 # @app.route('/power_consumption', methods=['POST'])
 # def total_output_load():
