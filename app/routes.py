@@ -22,7 +22,7 @@ def calculate():
     return render_template('calculate.html', title='Calculate')
 
 @app.route("/get_result")
-def calculate():
+def get_result():
     return render_template('get_result.html')
 
 
