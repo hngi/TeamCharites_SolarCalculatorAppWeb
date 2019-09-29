@@ -94,7 +94,7 @@ def login():
         return redirect(next_page) if next_page else redirect(url_for('index'))
     else:
         flash('Login Unsuccessful. Please check username and password', 'danger')
-    # return render_template('login.html', title='Login', form=form)
+    return flash('Login Successful!')
 
 
 @app.route("/logout")
