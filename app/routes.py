@@ -95,20 +95,29 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
-# @app.route("/logout")
-# def logout():
-#     logout_user()
-#     return redirect(url_for('index'))
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
-# @app.errorhandler(404)
-# def error_404(error):
-#     return render_template('404.html'), 404
-#
-# @app.errorhandler(403)
-# def error_403(error):
-#     return render_template('404.html'), 403
-#
-# @app.errorhandler(500)
-# def error_500(error):
-#     return render_template('404.html'), 500
+@app.errorhandler(404)
+def error_404(error):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(403)
+def error_403(error):
+    return render_template('404.html'), 403
+
+
+@app.errorhandler(500)
+def error_500(error):
+    return render_template('404.html'), 500
+
+
+@app.after_request
+def add_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    return response

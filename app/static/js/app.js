@@ -1,9 +1,9 @@
 $("document").ready(function(){
     $("#result").click(function(){
-        var total_power = $(#tpc).val();
-        var solar_panel_power = $(#spp).val();
-        var battery_voltage = $(#bv).val();
-        var days_of_autonomy = $(#doa).val();
+        var total_power = $("#tpc").val();
+        var solar_panel_power = $("#spp").val();
+        var battery_voltage = $("#bv").val();
+        var days_of_autonomy = $("#doa").val();
         $.ajax({
             url: "http://localhost:5000/result/",
             type: "POST",
