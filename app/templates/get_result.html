@@ -27,7 +27,7 @@
                     days_of_autonomy:$("#doa").val();
                 },
                 dataType: 'JSON',
-                type: 'GET',
+                type: 'POST',
                 success: function(data){
                     $("#result").html(data.result);
                 }
