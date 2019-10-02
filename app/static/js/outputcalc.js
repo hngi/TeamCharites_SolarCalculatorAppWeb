@@ -115,21 +115,7 @@ function totalPowerConsumption() {
         }
     }
     let show = document.getElementById("total");
-    show.innerHTML = `${total}Wh`;
+    show.innerHTML = `${total}Whrs/day`;
     show.style.display = "block";
-
+    
 }
-function reset() {
-	let b = document.getElementById("theTable")
-	while(b.hasChildNodes()) {
-		b.removeChild(b.lastChild);
-	}
-	document.getElementById("total").innerHTML = "";
-	total1 = 0;
-
-}
-
-
-
-
-

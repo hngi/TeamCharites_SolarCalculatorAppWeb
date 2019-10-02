@@ -3,6 +3,7 @@ from flask import render_template, url_for, flash, redirect, request
 from app.forms import RegistrationForm, LoginForm
 from app.models import User
 from flask_login import login_user, current_user, logout_user, login_required
+import math
 
 
 @app.route("/")
@@ -17,13 +18,34 @@ def about():
 
 
 @app.route("/calculate")
+@login_required
 def calculate():
     return render_template('calculate.html', title='Calculate')
 
 
+@app.route("/get_result")
+def get_result():
+    return render_template('get_result.html')
+
+
 @app.route("/result")
 def result():
-    return render_template('results.html', title='Result')
+    # data = request.get_json()
+    sun_hours = 3.4
+    load = 10182 #user's total power consumption
+    output_load = 10182 * 1.3
+    panel_capacity_needed = output_load / sun_hours
+    solar_panel_power = 360 #given by the user
+    number_of_panels_needed = math.ceil(panel_capacity_needed / solar_panel_power)
+    # total_watt = data['total_watt']
+    # inverter_size = total_watt * 1.3
+    battery_loss = 0.85
+    depth_of_discharge = 0.6
+    battery_voltage = 12  #given by the user
+    days_of_autonomy = 3  # determined by user
+    battery_required = (load * days_of_autonomy) / (battery_loss * depth_of_discharge * battery_voltage)
+    return render_template('results.html', title='Result', panel_capacity_needed=panel_capacity_needed,
+                           number_of_panels_needed=number_of_panels_needed, battery_required=battery_required)
 
 # @app.route('/power_consumption', methods=['POST'])
 # def total_output_load():
@@ -48,7 +70,7 @@ def register():
         data = request.form
         hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
         # hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=data['username'], email=data['email'],password=hashed_password)
+        user = User(username=data['username'], email=data['email'], password=hashed_password)
         # user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
@@ -74,20 +96,22 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
-# @app.route("/logout")
-# def logout():
-#     logout_user()
-#     return redirect(url_for('index'))
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.errorhandler(404)
 def error_404(error):
     return render_template('404.html'), 404
-#
+
+
 @app.errorhandler(403)
 def error_403(error):
     return render_template('404.html'), 403
-#
+
+
 @app.errorhandler(500)
 def error_500(error):
     return render_template('404.html'), 500

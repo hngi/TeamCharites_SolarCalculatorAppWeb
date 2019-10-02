@@ -19,7 +19,7 @@
 
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/elektor-white.png') }}"
+            <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/elektor.png') }}"
                     class='logo' alt="Brand"></a>
             <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon" style='color:white'></span>
@@ -29,15 +29,24 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('index') }}">HOME</a>
                     </li>
+                    {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('calculate') }}">CALCULATOR</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('login') }}">LOGIN</a>
+                        <a class="nav-item nav-link" href="{{ url_for('logout') }}">LOGOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('register') }}">REGISTER</a>
+                        <a class="nav-item nav-link" href="#">Welcome {{ current_user }}</a>
                     </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" href="{{ url_for('login') }}">LOGIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" href="{{ url_for('register') }}">REGISTER</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('about') }}">ABOUT</a>
                     </li>
@@ -45,6 +54,20 @@
             </div>
         </div>
     </nav>
+    <div role="main" class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+              </div>
+
 
     <div class="container">
         <div class="row">
