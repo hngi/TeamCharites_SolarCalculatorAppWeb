@@ -88,14 +88,14 @@
                         {{ form.hidden_tag() }}
                         <fieldset class="form-group">
                             <legend class="border-bottom mb-4">Join us now!</legend>
-                            <div class="form-group">
+                            <div id="usernameDiv" class="form-group">
                                 {{ form.username.label(class="form-control-label") }}
 
                                 {% if form.username.errors %}
                                 {{ form.username(class="form-control form-control-lg is-invalid") }}
                                 <div class="invalid-feedback">
                                     {% for error in form.username.errors %}
-                                    <span>{{ error }}</span>
+                                    <span id="usernameErrorMessage">{{ error }}</span>
                                     {% endfor %}
                                 </div>
                                 {% else %}
@@ -117,13 +117,13 @@
                                 {% endif %}
                             </div>
                             <br>
-                            <div class="form-group">
+                            <div id="passwordDiv" class="form-group">
                                 {{ form.password.label(class="form-control-label") }}
                                 {% if form.password.errors %}
                                 {{ form.password(class="form-control form-control-lg is-invalid") }}
                                 <div class="invalid-feedback">
                                     {% for error in form.password.errors %}
-                                    <span>{{ error }}</span>
+                                    <span id="passwordErrorMessage">{{ error }}</span>
                                     {% endfor %}
                                 </div>
                                 {% else %}
@@ -131,13 +131,13 @@
                                 {% endif %}
                             </div>
                             <br>
-                            <div class="form-group">
+                            <div id="confirmPasswordDiv" class="form-group">
                                 {{ form.confirm_password.label(class="form-control-label") }}
                                 {% if form.confirm_password.errors %}
                                 {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
                                 <div class="invalid-feedback">
                                     {% for error in form.confirm_password.errors %}
-                                    <span>{{ error }}</span>
+                                    <span id="confirmPasswordErrorMessage">{{ error }}</span>
                                     {% endfor %}
                                 </div>
                                 {% else %}
@@ -146,7 +146,7 @@
                             </div>
                         </fieldset>
                         <div class="form-group">
-                            {{ form.submit(class="btn btn-outline-info") }}
+                            {{ form.submit(class="btn btn-outline-info", onclick="validate()") }}
                         </div>
                     </form>
 
@@ -216,7 +216,8 @@
             </div>
         </footer>
     
-    
+        
+        <script src="{{ url_for('static', filename='js/validate.js') }}"></script>
         <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
         <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
