@@ -22,7 +22,7 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('That username is taken. Please choose a different one.')
         elif len(username) < 5:
             raise ValidationError('Username must be at least 5 characters long')
-        elif re.match(r'[A-Za-z0-9_]', username):
+        elif not re.match(r'[A-Za-z0-9_]', username):
             raise ValidationError('Username should be a combination of lowercase and uppercase alphabetic characters, numeric characters and underscore')
 
     def validate_email(self, email):
