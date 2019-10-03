@@ -1,5 +1,4 @@
 var rIndex,
-total = 0,
 table = document.getElementById("table");
 
 
@@ -115,21 +114,7 @@ function totalPowerConsumption() {
         }
     }
     let show = document.getElementById("total");
-    show.innerHTML = `${total}Wh`;
+    show.value = `${total}Whrs/day`;
     show.style.display = "block";
-
 }
-function reset() {
-	let b = document.getElementById("theTable")
-	while(b.hasChildNodes()) {
-		b.removeChild(b.lastChild);
-	}
-	document.getElementById("total").innerHTML = "";
-	total1 = 0;
-
-}
-
-
-
-
 

@@ -114,8 +114,9 @@ function totalPowerConsumption() {
             total += tot;
         }
     }
-    let show = document.getElementById("total");
-    show.innerHTML = `${total}Whrs/day`;
+    document.getElementById("total").value = 9000;
+    //let show = document.getElementById("total");
+    //show.value = `${total}Whrs/day`;
     show.style.display = "block";
-    
 }
+

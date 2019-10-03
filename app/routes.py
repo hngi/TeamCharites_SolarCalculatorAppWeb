@@ -1,10 +1,37 @@
 from app import app, db, bcrypt
 from flask import render_template, url_for, flash, redirect, request
-from app.forms import RegistrationForm, LoginForm
-from app.models import User
+from app.forms import RegistrationForm, LoginForm, ApplianceForm, OutputForm
+from app.models import User, Appliance
 from flask_login import login_user, current_user, logout_user, login_required
 import math
 
+suggest = {
+    "Coffee Pot": 200,
+    "Coffee Maker": 800,
+    "Toaster": 1500,
+    "Blender": 300,
+    "Microwave": 1500,
+    "Hot Plate": 1200,
+    "Dishwasher": 1500,
+    "Washing Machine": 500,
+    "Iron": 1000,
+    "Electric Heater": 1500,
+    "Air conditioner": 1000,
+    "Ceiling Fan": 50,
+    "Computer (Laptop)": 50,
+    "Computer (Desktop)": 150,
+    "Computer Printer": 100,
+    "TV (25in Color)": 150,
+    "TV (19in Color)": 70,
+    "TV (12in B/W)": 20,
+    "CD Player": 35,
+    "Stereo": 30,
+    "Satellite Dish": 30,
+    "Lights (100W Incandescent)": 100,
+    "Lights (25W Compact Flourescent)": 28,
+    "Lights (50W DC Incandescent)": 50,
+    "Refrigerator": 100
+}
 
 @app.route("/")
 @app.route('/home')
@@ -14,53 +41,23 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template('about.html', title='About')
+    return render_template('about.html')
 
 
-@app.route("/calculate")
+@app.route("/FAQ")
+def FAQ():
+    return render_template('FAQ.html')
+
+
+@app.route("/calculate", methods=['GET', 'POST'])
 @login_required
 def calculate():
-    return render_template('calculate.html', title='Calculate')
-
+    return render_template('calculate.html')
 
 @app.route("/get_result")
 def get_result():
     return render_template('get_result.html')
 
-
-@app.route("/result")
-def result():
-    # data = request.get_json()
-    sun_hours = 3.4
-    load = 10182 #user's total power consumption
-    output_load = 10182 * 1.3
-    panel_capacity_needed = output_load / sun_hours
-    solar_panel_power = 360 #given by the user
-    number_of_panels_needed = math.ceil(panel_capacity_needed / solar_panel_power)
-    # total_watt = data['total_watt']
-    # inverter_size = total_watt * 1.3
-    battery_loss = 0.85
-    depth_of_discharge = 0.6
-    battery_voltage = 12  #given by the user
-    days_of_autonomy = 3  # determined by user
-    battery_required = (load * days_of_autonomy) / (battery_loss * depth_of_discharge * battery_voltage)
-    return render_template('results.html', title='Result', panel_capacity_needed=panel_capacity_needed,
-                           number_of_panels_needed=number_of_panels_needed, battery_required=battery_required)
-
-# @app.route('/power_consumption', methods=['POST'])
-# def total_output_load():
-#     output = []
-#     data = request.get_json()
-#     for item in data:
-#         app_qtty = item['qtty']
-#         app_hours = item['hours']
-#         app_consumption = item['consumption']
-#         app_output = app_qtty * app_hours * app_consumption
-#         output.append(app_output)
-#     total_app_output = adder(output)
-#     result = {'status': 'oK', 'status_code': '200', 'total_power_consumption': total_app_output}
-#     return jsonify(result)
-#
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -69,9 +66,7 @@ def register():
     if form.validate_on_submit():
         data = request.form
         hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
-        # hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=data['username'], email=data['email'], password=hashed_password)
-        # user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
@@ -109,9 +104,42 @@ def error_404(error):
 
 @app.errorhandler(403)
 def error_403(error):
-    return render_template('404.html'), 403
-
+    return render_template('403.html'), 403
 
 @app.errorhandler(500)
 def error_500(error):
-    return render_template('404.html'), 500
+    return render_template('500.html'), 500
+
+@app.route("/output", methods=['GET', 'POST'])
+@login_required
+def output():
+    appliances = Appliance.query.filter_by(owner=current_user)
+    appliance_totals = [0]
+    for appliance in appliances:
+        appliance_totals.append(appliance.total)
+    output = sum(appliance_totals)
+    form = ApplianceForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        quantity = form.quantity.data 
+        power = form.power.data
+        hours = form.hours.data
+        total = (quantity*power*hours)
+        owner = current_user
+        appliance = Appliance(name=name, quantity=quantity, power=power, hours=hours, total=total, owner=owner)
+        db.session.add(appliance)
+        db.session.commit()
+        flash('You have added an appliance', 'success')
+        return redirect(url_for('output'))
+    return render_template('output.html', form=form, output=output, appliances=appliances, suggest=suggest)
+
+@app.route("/appliance/<int:appliance_id>/delete", methods=['POST'])
+@login_required
+def delete(appliance_id):
+    appliance = Appliance.query.get_or_404(appliance_id)
+    if appliance.owner != current_user:
+        abort(403)
+    db.session.delete(appliance)
+    db.session.commit()
+    flash('Your appliance has been deleted!', 'success')
+    return redirect(url_for('output'))
