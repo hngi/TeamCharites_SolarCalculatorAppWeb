@@ -60,6 +60,9 @@
                     </li>
                     {% endif %}
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('FAQ') }}">FAQ</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('about') }}">ABOUT</a>
                     </li>
                 </ul>
@@ -118,11 +121,18 @@
                                                     <table class='table' id="theTable"></table>
             
                                             </div>
-                                                <button id="totalButton" class="btn btn-primary login mt-3" onclick="totalPowerConsumption()">Show Your Total
-                                                    Output</button>
+                                                <a href="#" id="totalButton" class="btn btn-primary login mt-3" onclick="totalPowerConsumption()">Show Your Total
+                                                    Output</a>
                                                 <button class="btn btn-primary login mt-3"><a href="get_result" style="color:white">Get Result</a></button>
-                                                <div id="total"></div>
+                                                
                                                 <br>
+                                                
+<form>
+  <p>
+    <label>Text Input: </label>
+    <input type="text" id="input1">
+  </p>
+</form>
                                             </div>
                                         </div>
                                     </div>

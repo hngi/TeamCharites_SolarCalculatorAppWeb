@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Elektor | About Us</title>
-
-
-	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <title>Elektor | Error 500</title>
 
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/404.css') }}">
 </head>
 
 <body>
@@ -80,7 +78,7 @@
             <div class="col-md-6">
                 <div id='top'>
                     <img src="{{ url_for('static', filename='img/whitecalc.png') }}" class='img-fluid' alt="">
-                    <h2>ABOUT PAGE</h2>
+                    <h2>ERROR 500</h2>
                 </div>
             </div>
             <div class="col-md-2"></div>
@@ -92,37 +90,23 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
 
-                <div class='req mb-2 shadow-lg' style='background-color: #fafcfe; padding:10px; border-radius: 10px;'>
-                        <div class="text-content">
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <h2 class="pt-3 text-center">About Us</h2>
-                                        <img src="{{ url_for('static', filename='img/resi.png') }}" id='circle' style="margin-left:auto; margin-right:auto; display:block" height="50%" width="80%" class='img-flud mb-3' alt="">
-                                        <p>Know how much power you have in your surrounding at different time
-                                                intervals in order to
-                                                plan for the safier, healthier and cost friendly future you and your family have always dreamt of.</p>
-                                    </div>
-                    
-                                    <div class="col-md-6">
-                                        <h2 class="pt-3 text-center">Contact Us</h2>
-                                        <form action="">
-                                            <input type="text" class='field' placeholder="Your Name" required>
-                                            <input type="email" class="field" placeholder="Email Address" required>
-                                            <input type="text" class="field" placeholder="Telephone Number" required>
-                                            <textarea name="" class="field area" id="" placeholder="Message"
-                                                required></textarea>
-                                            <button type="submit" class='btn'>Submit</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                <div class='req mb-4 shadow-lg' style='background-color: #fafcfe; padding:10px; border-radius: 10px;'>
+                    <div id="notfound">
+                        <div class="notfound">
+                            <div class="notfound-404"></div>
+                            <h1> ERROR 500</h1>
+                            <h2>Oops! Something went wrong</h2>
+                            <p>We're experiencing some trouble on our end. Please try again in the near future</p>
+                            <a href="{{ url_for('index') }}">Back to homepage</a>
                         </div>
+                    </div>
 
                 </div>
-                <div class="col-md-2"></div>
 
             </div>
+            <div class="col-md-2"></div>
         </div>
+    </div>
 
     <div class="container">
         <div class="row my-5">
