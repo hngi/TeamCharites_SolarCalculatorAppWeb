@@ -52,8 +52,27 @@ def FAQ():
 @app.route("/calculate", methods=['GET', 'POST'])
 @login_required
 def calculate():
-    return render_template('calculate.html')
+    appliances = Appliance.query.filter_by(owner=current_user)
+    appliance_totals = [0]
+    for appliance in appliances:
+        appliance_totals.append(appliance.total)
+    output = sum(appliance_totals)
+    form = ApplianceForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        quantity = form.quantity.data 
+        power = form.power.data
+        hours = form.hours.data
+        total = (quantity*power*hours)
+        owner = current_user
+        appliance = Appliance(name=name, quantity=quantity, power=power, hours=hours, total=total, owner=owner)
+        db.session.add(appliance)
+        db.session.commit()
+        flash('You have added an appliance', 'success')
+        return redirect(url_for('calculate'))
+    return render_template('calculate.html', form=form, output=output, appliances=appliances, suggest=suggest)
 
+    
 @app.route("/get_result")
 def get_result():
     return render_template('get_result.html')
@@ -115,29 +134,6 @@ def error_403(error):
 def error_500(error):
     return render_template('500.html'), 500
 
-@app.route("/output", methods=['GET', 'POST'])
-@login_required
-def output():
-    appliances = Appliance.query.filter_by(owner=current_user)
-    appliance_totals = [0]
-    for appliance in appliances:
-        appliance_totals.append(appliance.total)
-    output = sum(appliance_totals)
-    form = ApplianceForm()
-    if form.validate_on_submit():
-        name = form.name.data
-        quantity = form.quantity.data 
-        power = form.power.data
-        hours = form.hours.data
-        total = (quantity*power*hours)
-        owner = current_user
-        appliance = Appliance(name=name, quantity=quantity, power=power, hours=hours, total=total, owner=owner)
-        db.session.add(appliance)
-        db.session.commit()
-        flash('You have added an appliance', 'success')
-        return redirect(url_for('output'))
-    return render_template('output.html', form=form, output=output, appliances=appliances, suggest=suggest)
-
 @app.route("/appliance/<int:appliance_id>/delete", methods=['POST'])
 @login_required
 def delete(appliance_id):
@@ -147,4 +143,4 @@ def delete(appliance_id):
     db.session.delete(appliance)
     db.session.commit()
     flash('Your appliance has been deleted!', 'success')
-    return redirect(url_for('output'))
+    return redirect(url_for('calculate'))
