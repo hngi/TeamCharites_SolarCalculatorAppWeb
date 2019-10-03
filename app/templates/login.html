@@ -87,16 +87,16 @@
                         <fieldset class="form-group">
                             <legend class="border-bottom mb-4" style="font-size: 16px;">Log in to continue access to account</legend>
                             <div class="form-group">
-                                {{ form.username.label(class="form-control-label") }}
-                                {% if form.username.errors %}
-                                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                {{ form.login_data.label(class="form-control-label") }}
+                                {% if form.login_data.errors %}
+                                {{ form.login_data(class="form-control form-control-lg is-invalid") }}
                                 <div class="invalid-feedback">
-                                    {% for error in form.username.errors %}
+                                    {% for error in form.login_data.errors %}
                                     <span>{{ error }}</span>
                                     {% endfor %}
                                 </div>
                                 {% else %}
-                                {{ form.username(class="form-control form-control-lg") }}
+                                {{ form.login_data(class="form-control form-control-lg") }}
                                 {% endif %}
                             </div>
                             <br>

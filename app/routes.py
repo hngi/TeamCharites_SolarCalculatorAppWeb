@@ -81,9 +81,14 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         data = request.form
-        user = User.query.filter_by(email=data['username']).first()
+        user = User.query.filter_by(username=data['login_data']).first()
+        email = User.query.filter_by(email=data['login_data']).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('index'))
+        elif email and bcrypt.check_password_hash(email.password, form.password.data):
+            login_user(email)
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('index'))
         else:
