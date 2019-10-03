@@ -140,6 +140,7 @@ footer {
     h1#solar {
         font-size: 40px;
         margin-top: 15px;
+        text-align: center;
 
     }
 
@@ -158,6 +159,6 @@ footer {
     }
 
     img#side{
-        display: none;
+        display: block;
     }
 }
