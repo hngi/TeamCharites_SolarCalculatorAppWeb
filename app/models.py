@@ -2,9 +2,11 @@ from datetime import datetime
 from app import db, login_manager
 from flask_login import UserMixin
 
+
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,6 +17,7 @@ class User(db.Model, UserMixin):
     
     def __repr__(self):
         return self.username
+
 
 class Appliance(db.Model):
     id = db.Column(db.Integer, primary_key=True)
