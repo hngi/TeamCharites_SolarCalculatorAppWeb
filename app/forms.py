@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, IntegerField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange
 from app.models import User
 import re
 
@@ -45,10 +45,7 @@ class LoginForm(FlaskForm):
 
 class ApplianceForm(FlaskForm):
     name = StringField('Appliance', validators=[DataRequired()])
-    quantity = IntegerField('Quantity', validators=[DataRequired()])
-    power = IntegerField('Power', validators=[DataRequired()])
-    hours = IntegerField('Hours per Day', validators=[DataRequired()])
+    quantity = IntegerField('Quantity', validators=[DataRequired('Please enter a Number')])
+    power = IntegerField('Power', validators=[DataRequired('Please enter a Number')])
+    hours = IntegerField('Hours per Day', validators=[DataRequired('Please enter a Number'), NumberRange(max=24)])
     submit = SubmitField('Add')
-
-class OutputForm(FlaskForm):
-    submit = SubmitField('Calculate')
