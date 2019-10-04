@@ -5,25 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Elektor | Calculator</title>
-
+    <title>Elektor | Calculator </title>
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/404.css') }}">
-
-
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/output.css') }}">
 
-    <style>
-
-        .container{overflow: hidden}
-        .tab{float: left;}
-        .tab-2{margin-left: 50px}
-        .tab-2 input{display: block;margin-bottom: 10px}
-        tr{transition:all .25s ease-in-out}
-        tr:hover{background-color:#EEE;cursor: pointer}
-
-    </style>
 
 </head>
 
@@ -31,9 +18,10 @@
 
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/elektor.png') }}"
+            <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/elektor-white.png') }}"
                     class='logo' alt="Brand"></a>
-            <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <button class="navbar-toggler bg-white" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon" style='color:white'></span>
             </button>
             <div class="collapse navbar-collapse text-white" id="navbarResponsive">
@@ -60,9 +48,6 @@
                     </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('FAQ') }}">FAQ</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('about') }}">ABOUT</a>
                     </li>
                 </ul>
@@ -71,130 +56,252 @@
     </nav>
 
 
-            <div class="container">
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-6">
-                            <div id='top'>
-                                <img src="{{ url_for('static', filename='img/whitecalc.png') }}" class='img-fluid' alt="">
-                                <h2>CALCULATOR</h2>
-                            </div>
+    <!-- <div class="col-md-2"></div> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class=" text-center alert alert-{{ category }}">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+            <div class="col-md-2"></div>
+
+
+            <div class="row">
+
+                <div class="col-md-12 mt-3 ">
+                    <div id='container-form' style='background: #fafcfe; padding: 30px; border-radius: 5px;'>
+                        <div class="col-md-12 mx-auto">
+                            <h2 class='text-center mx-auto text-primary'>
+                                Input Details of Appliance below
+                            </h2>
                         </div>
-                        <div class="col-md-2"></div>
+                        <form method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-3">Enter your details</legend>
+                                Fill in your appliances & loads here. Check our default values in the <a href="#tips">
+                                    &nbsp; 'Help!' &nbsp; </a> section below for more information.
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 col-lg7- mt-3">
+                                        {{ form.name.label(class="form-control-label") }}
+                                        {% if form.name.errors %}
+                                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.name.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.name(class="form-control form-control-lg") }}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="form-group col-md-6 mt-3">
+                                        {{ form.quantity.label(class="form-control-label") }}
+                                        {% if form.quantity.errors %}
+                                        {{ form.quantity(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.quantity.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.quantity(class="form-control form-control-lg") }}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        {{ form.power.label(class="form-control-label") }}
+                                        {% if form.power.errors %}
+                                        {{ form.power(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.power.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.power(class="form-control form-control-lg") }}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        {{ form.hours.label(class="form-control-label") }}
+                                        {% if form.hours.errors %}
+                                        {{ form.hours(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.hours.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.hours(class="form-control form-control-lg") }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                {{ form.submit(class="btn btn-outline-info") }}
+                            </div>
+                        </form>
+
+                        <h2 class='text-center mx-auto text-success'>
+                            Results
+                        </h2>
+                        <div class="table-responsive-md">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Device/Application</th>
+                                        <th scope="col">Quantity (Nos)</th>
+                                        <th scope="col">Power Consumption Rating (Watts)</th>
+                                        <th scope="col">Hours of use of Device Per Day (Hrs/day)</th>
+                                        <th scope="col">Total Watts-Hours per Day (WHrs/day)</th>
+                                        <th scope='col'></th>
+                                    </tr>
+                                </thead>
+                                <!-- {{ current_user }} -->
+                                {% for appliance in appliances %}
+                                <tbody>
+                                    <tr>
+                                        <th>{{ appliance.name }}</th>
+                                        <th>{{ appliance.quantity }}</th>
+                                        <th>{{ appliance.power }}</th>
+                                        <th>{{ appliance.hours }}</th>
+                                        <th>{{ appliance.total }}</th>
+                                        <th>
+                                            <form action="{{ url_for('delete', appliance_id=appliance.id) }}"
+                                                method="POST">
+                                                <input class="btn btn-danger" type="submit" value="Delete">
+                                            </form>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                            <div class='mt-5'>
+                                Your total ouput: {{ output }}Watts-Hours/day
+                            </div>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
+             
 
 
-                <div class="container">
-                    <div class="row">
-                             <div class="col-md-12">
-                            <div id="container" style="background:#fafcfe; padding: 20px; border-radius: 5px;">
-                                <div id="wrapper">
-                                    <div id="form-container">
-                                        <div class="img-form">
-                                            <div id="wrapper" class="form-wrapper">
-                                                <div class="tab tab-2">
-                                                    <h2>Fill in your Device details</h2>
-                                                    Device/Application :<input type="text" name="d" id="d">
-                                                    Quantity (Nos):<input type="number" name="q" id="q">
-                                                    Power Consumption Rating (Watts) :<input type="number" name="p" id="p">
-                                                    Hours of use of Device Per Day (Hrs/day) :<input type="number" name="h" id="h" max="24">
-                                    
-                                                    <button onclick="addHtmlTableRow();">Add</button>
-                                                    <button onclick="editHtmlTbleSelectedRow();">Edit</button>
-                                                    <button onclick="removeSelectedRow();">Remove</button>
-                                                </div>
-                                                <br><br><br><br>
-                                                <div class="tab tab-1">
-                                                    <table id="table" border="1">
-                                                        <tr>
-                                                            <th>Device/Application</th>
-                                                            <th>Quantity (Nos)</th>
-                                                            <th>Power Consumption Rating (Watts)</th>
-                                                            <th>Hours of use of Device Per Day (Hrs/day)</th>
-                                                            <th>Total Watts-Hours per Day (WHrs/day)</th>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-            
-                                                <div class="table-responsive">
-                                                    <table class='table' id="theTable"></table>
-            
-                                            </div>
-                                                <a href="#" id="totalButton" class="btn btn-primary login mt-3" onclick="totalPowerConsumption()">Show Your Total
-                                                    Output</a>
-                                                <button class="btn btn-primary login mt-3"><a href="get_result" style="color:white">Get Result</a></button>
-                                                
-                                                <br>
-                                                
-<form>
-  <p>
-    <label>Text Input: </label>
-    <input type="text" id="input1">
-  </p>
-</form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-            
-                        </div>
-            
-                        <div class="container">
-                                <div class="row my-5">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-3">
-                                        <div id="pad">
-                                            <img src="{{ url_for('static', filename='img/lock.svg') }}" class='img-fluid' alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 text-white">
-                                        <div id='data'>
-                                            <h2>Your data is safe with Us. <br>
-                                                We are 100% secure.</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3 p-3">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div id="tips" class='text-white'>
+                    <h3 class='text-center'>HOW TO USE</h3>
+                    <ul>
+                        <li>Select the appliances you use in your house.</li>
+                        <li>Fill in the quantity of each appliance.</li>
+                        <li>Input the Wattage value of each appliance.</li>
+                        <li>In case you dont know the wattage you can use the typical values we have created for you in
+                            the
+                            dropdown below.</li>
+                        <li>However, for the most accurate information look on your appliance to find its wattage rating
+                            (or it amperage rating and then multiply that by its voltage to approximate its wattage).
+                            Then input the average number of hours the appliance is used in a day</li>
+                            <li>Below is a list of items and their power usage in watts:</li>
                     
-                        <footer style="background-color: #134373; color:#fafcfe; padding-top: 15px;">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <img src="{{ url_for('static', filename='img/whitecalc.png') }}" alt="">
-                                        <img src="{{ url_for('static', filename='img/elektor-white.png') }}" alt="">
-                                        <div class="div">
-                                            <p class='mt-3'> &copy; 2019. TeamCharites All rights reserved</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3 style="color: #e0dd1c;">About the App</h3>
-                                        <p>Know how much power you have in your surrounding at different time
-                                            intervals in order to
-                                            plan for the safier, healthier and cost friendly future you and your family have always dreamt
-                                            of.</p>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h3 style="color: #e0dd1c;">Contact Us</h3>
-                                        <address style="margin-bottom:30px;">
-                                            Team Charites <br>
-                                            3, Remote House,<br>
-                                            HNG Avenue, Nigeria <br>
-                                            +234-1111-0000 <br>
-                                            info@charitesfinance.com
-                                        </address>
-                                    </div>
-                                </div>
-                            </div>
-                        </footer>
-            
-            
-                        <script type="text/javascript" src="{{ url_for('static', filename='js/outputcalc.js') }}"></script>
-                        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-                        <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
-                        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-            
+                    <li style="list-style: none" class='mt-3'>
+                    <select class='form-group'>
+                        {% for key in suggest %}
+                        <option>{{ key }} - {{ suggest[key] }}Watts</option>
+                        {% endfor %}
+                    </select>
+</li>
+                </ul>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+
+
+
+
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- </div> -->
+    <!-- <div class="col-md-2"></div> -->
+
+
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <div id="pad">
+                    <img src="{{ url_for('static', filename='img/lock.svg') }}" class='img-fluid' alt="">
+                </div>
+            </div>
+            <div class="col-md-7 text-white">
+                <div id='data'>
+                    <h2>Your data is safe with Us. <br>
+                        We are 100% secure.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer style="background-color: #134373; color:#fafcfe; padding-top: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="{{ url_for('static', filename='img/whitecalc.png') }}" alt="">
+                    <img src="{{ url_for('static', filename='img/elektor-white.png') }}" alt="">
+                    <div class="div">
+                        <p class='mt-3'> &copy; 2019. TeamCharites All rights reserved</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3 style="color: #e0dd1c;">About the App</h3>
+                    <p>Know how much power you have in your surrounding at different time
+                        intervals in order to
+                        plan for the safier, healthier and cost friendly future you and your family have always dreamt
+                        of.</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 style="color: #e0dd1c;">Contact Us</h3>
+                    <address style="margin-bottom:30px;">
+                        Team Charites <br>
+                        3, Remote House,<br>
+                        HNG Avenue, Nigeria <br>
+                        +234-1111-0000 <br>
+                        info@charitesfinance.com
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+
 
 </body>
 
