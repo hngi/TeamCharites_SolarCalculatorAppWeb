@@ -14,6 +14,29 @@
 
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script type=text/javascript>
+$("document").ready(function(){
+    $("#result").click(function(){
+    console.log("hiiiiii");
+        var total_power = $("#tpc").val();
+        var solar_panel_power = $("#spp").val();
+        var battery_voltage  = $("#bv").val();
+        var days_of_autonomy = $("#doa").val();
+        $.post({
+            url: "http://localhost:5000/result",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({"total_power": total_power, 'solar_panel_power':solar_panel_power, 'battery_voltage':battery_voltage,
+            'days_of_autonomy':days_of_autonomy})
+        }).done(function(data) {
+<!--            console.log(data);-->
+ $("p").append(data);
+        });
+    });
+});
+
+</script>
 
 
 </head>
@@ -33,6 +56,10 @@
     </div>
     <button id="result">Result
 
+        <p>
+
+        </p>
+
 <!--</div>-->
 <!--<div class="container">-->
 <!--    <div class="row">-->
@@ -41,7 +68,7 @@
 <!--</div>-->
 
 <!--<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>-->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script type=text/javascript>
 <!--        $(function() {-->
 <!--            $('#result').click(function(){-->
@@ -63,18 +90,20 @@
 <!--        });-->
 $("document").ready(function(){
     $("#result").click(function(){
-        var total_power:$("#tpc").val();
-        var solar_panel_power :$("#spp").val();
-        var battery_voltage :$("#bv").val();
-        var days_of_autonomy:$("#doa").val();
-        $.ajax({
+    console.log("hiiiiii");
+        var total_power = $("#tpc").val();
+        var solar_panel_power = $("#spp").val();
+        var battery_voltage  = $("#bv").val();
+        var days_of_autonomy = $("#doa").val();
+        $.post({
             url: "http://localhost:5000/result/",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({"total_power": total_power, 'solar_panel_power':solar_panel_power, 'battery_voltage':battery_voltage,
             'days_of_autonomy':days_of_autonomy})
         }).done(function(data) {
-            console.log(data);
+<!--            console.log(data);-->
+ $("p").append(data);
         });
     });
 });

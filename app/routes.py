@@ -122,21 +122,31 @@ def result():
     data = request.get_json()
     print(data)
     sun_hours = 3.4
-    load = data['total_power']
-    output_load = data['total_power'] * 1.3
+    load = int(data['total_power'])
+    output_load = int(data['total_power']) * 1.3
     panel_capacity_needed = output_load / sun_hours
-    solar_panel_power = data['solar_panel_power']
+    solar_panel_power = int(data['solar_panel_power'])
     number_of_panels_needed = math.ceil(panel_capacity_needed / solar_panel_power)
     # total_watt = data['total_watt']
     # inverter_size = total_watt * 1.3
     battery_loss = 0.85
     depth_of_discharge = 0.6
-    nominal_battery_voltage = data['batt_volt']
+    nominal_battery_voltage = int(data['battery_voltage'])
     days_of_autonomy = 3  # determined by user
     battery_required = (load * days_of_autonomy) / (battery_loss * depth_of_discharge * nominal_battery_voltage)
     # result = {'status': 'oK', 'status_code': '200', 'number_of_panels_needed': number_of_panels_needed,
     #           'inverter_size': inverter_size, 'battery_required': battery_required, }
-    return render_template('result.html', panel_capacity_needed=panel_capacity_needed,
+    return redirect(url_for('results', panel_capacity_needed=panel_capacity_needed,
+                            number_of_panels_needed=number_of_panels_needed, battery_required=battery_required))
+    # return redirect(url_for('results', defaultEmail=email))
+
+
+@app.route("/results", methods=['GET'])
+def results():
+    panel_capacity_needed = request.args.get('panel_capacity_needed')
+    number_of_panels_needed = request.args.get('number_of_panels_needed')
+    battery_required = request.args.get('battery_required')
+    return render_template('results.html', panel_capacity_needed=panel_capacity_needed,
                            number_of_panels_needed=number_of_panels_needed, battery_required=battery_required)
 
 
