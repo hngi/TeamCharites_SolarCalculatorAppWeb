@@ -160,5 +160,40 @@ footer {
 
     img#side{
         display: block;
+        height: 225px;
+        position: relative;
+        top: -24em;
+
+        
+    }
+    .mbp{
+        position: relative;
+        top: 17em;
+    }
+    .tcer{
+        text-align: center;
+        padding: 0 30px;
+    }
+    a.btn.mt-3.mb-5.shadow-lg.clabtn {
+        position: relative;
+        left: 37%;
+    }
+    a.btn {
+    	background-color: #e0dd1c;
+    	color: #134373;
+	text-align: center;
+    	margin: auto;
+    	display: block;
+    	margin-right: 50%;
+    	width: 150px;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        text-align: center;
+        line-height: 28px;
+    }
+    .col-md-8.txtcol {
+        margin-top: 70px;
     }
 }
