@@ -176,8 +176,16 @@ footer {
     }
     a.btn.mt-3.mb-5.shadow-lg.clabtn {
         position: relative;
-        height: 45px;
         left: 37%;
+    }
+    a.btn {
+    	background-color: #e0dd1c;
+    	color: #134373;
+	text-align: center;
+    	margin: auto;
+    	display: block;
+    	margin-right: 50%;
+    	width: 150px;
     }
     p {
         margin-top: 0;
