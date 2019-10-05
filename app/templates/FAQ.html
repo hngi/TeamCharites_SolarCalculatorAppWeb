@@ -12,8 +12,9 @@
 
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/faq.css') }}">
 </head>
 
 <body>
@@ -87,27 +88,213 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+    <div class="container-fluid">
+        <div class="container bg-gray px-4 py-4">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h1 class='pb-2 text-primary'>Frequently Asked Questions</h1>
+                    <div class="row mt-2">
+                        <p class='hero-text m-auto'>Below is a list of frequently asked questions about solar for your
+                            home or business. Are there other things you’d like to know about solar?</p>
+                    </div>
+                </div>
+            </div>
 
-                <div class='req mb-2 shadow-lg' style='background-color: #fafcfe; padding:10px; border-radius: 10px;'>
-                        <div class="text-content">
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <h2 class="pt-3 text-center">FAQ</h2>
-                                        <p></p>
-                                    </div>
+
+
+            <div class="row">
+                <div class="col-md-6 my-3">
+                    <div class="panel-group" id="accordion" role='tablist' aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role='tab' id='headingOne'>
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent='#accordion' href="#collapseOne"
+                                        aria-expanded="false" aria-controls="collapseOne">
+                                        1. What are the financial benefits of solar energy?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id='collapseOne' class='panel-collapse collapse in' role='tabpanel'
+                                aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    When you install a solar energy system on your property, you save money on your
+                                    electricity bills and protect yourself against rising electricity rates in the
+                                    future. How much you can save depends on the utility rates and solar policies in
+                                    your area, but going solar is a smart investment regardless of where you live.
                                 </div>
                             </div>
+
                         </div>
 
+                    </div>
                 </div>
-                <div class="col-md-2"></div>
 
+                <div class="col-md-6 my-3">
+                    <div class="panel-group" id="accordion" role='tablist' aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role='tab' id='headingTwo'>
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent='#accordion' href="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">
+                                        2. What are the environmental benefits of solar energy?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id='collapseTwo' class='panel-collapse collapse in' role='tabpanel'
+                                aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    Solar power, like other renewable energy resources, has many environmental and
+                                    health benefits. Going solar reduces greenhouse gas emissions, which contribute to
+                                    climate change, and also results in fewer air pollutants like sulfur dioxide and
+                                    particulate matter, which can cause health problems.
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-3">
+                    <div class="panel-group" id="accordion" role='tablist' aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role='tab' id='headingThree'>
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent='#accordion' href="#collapseThree"
+                                        aria-expanded="false" aria-controls="collapseOne">
+                                        3. What are the pros and cons of solar power?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id='collapseThree' class='panel-collapse collapse in' role='tabpanel'
+                                aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    Here are some reasons why you might choose solar over another source of power:
+                                    Renewable: Sunlight is an infinite resource. It’s not like oil, which we remove from
+                                    the Earth and spend when we use it. The sun’s rays can be harvested for energy over
+                                    and over again without depleting the source.
+                                    Lower Electric Bills: As a replacement for grid-tied properties (anywhere with
+                                    access to power lines), solar power costs just a fraction of what you pay the
+                                    utility company each month. A properly sized system can drop your electric bill to
+                                    #0.
+                                    Remote power: If you live in a remote location, it may be too expensive or
+                                    impossible to run power lines to your house. Solar power systems generate energy
+                                    when you can’t hook into the power grid.
+                                    Improve Property Value: Homes equipped with solar systems sell for 3.74% more than
+                                    equivalent homes without solar. Solar homes sell for $14,329 more on average. Read
+                                    more about how solar impacts property values. Off-grid solar also enables you to buy
+                                    affordable undeveloped property in rural areas.
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 my-3">
+                    <div class="panel-group" id="accordion" role='tablist' aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role='tab' id='headingOne'>
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent='#accordion' href="#collapseFour"
+                                        aria-expanded="false" aria-controls="collapseFour">
+                                        4. How long do solar panels last?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id='collapseFour' class='panel-collapse collapse in' role='tabpanel'
+                                aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    Most manufacturers guarantee under warranty that their panels will be at least 80%
+                                    efficient for 25 years.
+
+                                    When the warranty is up, the panels don’t break down. They simply keep working at a
+                                    reduced output. A panel that is rated at 300 watts, for example, would still produce
+                                    240 watts of output at the 25-year mark.
+
+                                    If you include batteries with your system, those will also need to be replaced.
+                                    Lead-acid batteries typically last 3-7 years depending on how well you maintain
+                                    them. Lithium batteries are warrantied for 10-15 years.
+                                </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+            
+
+
+                <div class="col-md-6 my-3">
+                    <div class="panel-group" id="accordion" role='tablist' aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role='tab' id='headingFive'>
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent='#accordion' href="#collapseFive"
+                                        aria-expanded="false" aria-controls="collapseOne">
+                                        5. What is kilowatt?.
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id='collapseFive' class='panel-collapse collapse in' role='tabpanel'
+                                aria-labelledby="headingFive">
+                                <div class="panel-body">
+                                    A kilowatt is a measure of electrical power that is equivalent to 1,000 watts.
+                                    Kilowatts and watts both describe a rate of energy transfer; a watt is defined as
+                                    one joule per second. Your electrical bill charges you for electricity in terms of
+                                    kilowatt-hours (kWh). One kilowatt-hour is a unit of energy that is equivalent to
+                                    one kilowatt of power expended for one hour of time. For example, a hair dryer that
+                                    is rated at 1,000 watts (1 kW) and operates for one hour will use one kilowatt-hour
+                                    of energy.
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 my-3">
+                    <div class="panel-group" id="accordion" role='tablist' aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role='tab' id='headingSix'>
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent='#accordion' href="#collapseSix"
+                                        aria-expanded="false" aria-controls="collapseOne">
+                                        6. How much energy will my solar generate?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id='collapseSix' class='panel-collapse collapse in' role='tabpanel'
+                                aria-labelledby="headingSix">
+                                <div class="panel-body">
+                                    A well-situated 3.3 kW solar PV array in Utah will produce approximately 4,500
+                                    kilowatt-hours of electricity per year. The average Utahn uses around 9,000
+                                    kilowatt-hours of electricity annually, and a 6.4 kilowatt system would cover 100%
+                                    of usage. Use the Solar Simplified Calculator to learn more about how much energy a
+                                    given sized system could produce. Keep in mind that the production of a solar array
+                                    depends on many factors, including location, tilt, and materials. When you are ready
+                                    to learn more, consult a qualified solar contractor.
+                                    A rough estimate of the water heated by a single solar thermal collector system (4
+                                    ft. by 6.5 ft.) is 60 gallons. A double collector system of 9 ft. by 6.5 ft. can
+                                    heat 80 gallons. To heat a 120 gallon tank, you will need a triple collector system
+                                    which will be roughly 12 ft. by 6.5 ft. Systems can be chained together to fit your
+                                    needs. If you have a swimming pool or another special application for which you
+                                    would like to utilize solar hot water, please speak with a licensed solar thermal
+                                    contractor.
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
     <div class="container">
         <div class="row my-5">
